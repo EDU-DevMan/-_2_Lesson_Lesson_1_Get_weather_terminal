@@ -12,7 +12,6 @@ def main():
         url = url_template.format(sity)
         response = requests.get(url, params=payload)
         print(response.text)
-    print(response.url)
 
 
 if __name__ == '__main__':
