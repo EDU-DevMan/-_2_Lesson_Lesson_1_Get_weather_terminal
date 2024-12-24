@@ -5,11 +5,14 @@ CITIES = ["Лондон", "Шереметьево", "Череповец"]
 
 
 def main():
+    payload = {"nMTq": "", 'lang': 'ru'}
+
     for sity in CITIES:
-        url_template = 'https://wttr.in/{}?nMTq&lang=ru'
+        url_template = 'https://wttr.in/{}'
         url = url_template.format(sity)
-        response = requests.get(url)
+        response = requests.get(url, params=payload)
         print(response.text)
+    print(response.url)
 
 
 if __name__ == '__main__':
