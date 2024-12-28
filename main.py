@@ -21,21 +21,11 @@ def main():
                             datefmt='%d-%b-%y %H:%M:%S',
                             level=logging.INFO)
         logging.info("Not Found")
-    except requests.exceptions.ReadTimeout:
-        logging.basicConfig(format='%(asctime)s - %(message)s',
-                            datefmt='%d-%b-%y %H:%M:%S',
-                            level=logging.INFO)
-        logging.info("Request Timeout")
     except requests.exceptions.ConnectionError:
         logging.basicConfig(format='%(asctime)s - %(message)s',
                             datefmt='%d-%b-%y %H:%M:%S',
                             level=logging.INFO)
         logging.info("Connection error")
-    except requests.exceptions.RequestException:
-        logging.basicConfig(format='%(asctime)s - %(message)s',
-                            datefmt='%d-%b-%y %H:%M:%S',
-                            level=logging.INFO)
-        logging.info("Exception request")
 
 
 if __name__ == '__main__':
