@@ -10,7 +10,7 @@ def request_weather(city):
     url_template = 'https://wttr.in/{}'
     url = url_template.format(city)
     response = requests.get(url, params=payload)
-    # response.raise_for_status()
+    response.raise_for_status()
 
     return response.text
 
