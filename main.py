@@ -1,34 +1,28 @@
 import requests
-import logging
 
 
 CITIES = ["Лондон", "Шереметьево", "Череповец"]
 
 
-def request_weather():
+def request_weather(city):
     payload = {"nMTq": "", 'lang': 'ru'}
 
-    for city in CITIES:
-        url_template = 'https://wttr.in/{}'
-        url = url_template.format(city)
-        response = requests.get(url, params=payload)
-        response.raise_for_status()
-        print(response.text)
+    url_template = 'https://wttr.in/{}'
+    url = url_template.format(city)
+    response = requests.get(url, params=payload)
+    # response.raise_for_status()
+
+    return response.text
 
 
 def main():
     try:
-        request_weather()
+        for city in CITIES:
+            print(request_weather(city))
     except requests.exceptions.HTTPError:
-        logging.basicConfig(format='%(asctime)s - %(message)s',
-                            datefmt='%d-%b-%y %H:%M:%S',
-                            level=logging.INFO)
-        logging.info("Not Found")
+        print("Not Found.")
     except requests.exceptions.ConnectionError:
-        logging.basicConfig(format='%(asctime)s - %(message)s',
-                            datefmt='%d-%b-%y %H:%M:%S',
-                            level=logging.INFO)
-        logging.info("Connection error.")
+        print("Connection error.")
 
 
 if __name__ == '__main__':
